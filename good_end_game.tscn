@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=3 uid="uid://bi60fh5368kws"]
+
+[ext_resource type="Script" path="res://Good_End_Game.gd" id="1_ibmf3"]
+[ext_resource type="Shader" path="res://good_end_game.gdshader" id="2_c4kki"]
+[ext_resource type="FontFile" uid="uid://6fbs60imlv08" path="res://knight-warrior-font/KnightWarrior-w16n8.otf" id="3_8barf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_86isj"]
+shader = ExtResource("2_c4kki")
+shader_parameter/OCTAVE = 6
+shader_parameter/mulscale = 5.0
+shader_parameter/height = 0.6
+shader_parameter/tide = 0.1
+shader_parameter/foamthickness = 0.1
+shader_parameter/timescale = 1.0
+shader_parameter/waterdeep = 0.3
+shader_parameter/WATER_COL = Color(0, 0.5, 0.2, 1)
+shader_parameter/WATER2_COL = Color(0, 0.4, 0.15, 1)
+shader_parameter/FOAM_COL = Color(0, 0.4, 4, 0)
+
+[node name="Good_End_Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ibmf3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_86isj")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.454902, 0.054902, 0.619608)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -236.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_8barf")
+theme_override_font_sizes/font_size = 90
+text = "You Survived!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Play again" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -20.0
+offset_right = 100.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_8barf")
+text = "Play again"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 36.0
+offset_right = 100.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_8barf")
+text = "Quit"
+
+[connection signal="pressed" from="Play again" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

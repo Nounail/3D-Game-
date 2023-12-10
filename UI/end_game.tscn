@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcqtpifft4uc6"]
+
+[ext_resource type="Script" path="res://UI/Main_Menu.gd" id="1_b85lf"]
+[ext_resource type="Shader" path="res://UI/end_game.gdshader" id="2_p6k32"]
+[ext_resource type="FontFile" uid="uid://6fbs60imlv08" path="res://knight-warrior-font/KnightWarrior-w16n8.otf" id="3_yvqtw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ci35"]
+shader = ExtResource("2_p6k32")
+shader_parameter/OCTAVE = 6
+shader_parameter/mulscale = 5.0
+shader_parameter/height = 0.6
+shader_parameter/tide = 0.1
+shader_parameter/foamthickness = 0.35
+shader_parameter/timescale = 1.0
+shader_parameter/waterdeep = 0.3
+shader_parameter/WATER_COL = Color(0.8, 0, 0, 1)
+shader_parameter/WATER2_COL = Color(0, 0, 0, 1)
+shader_parameter/FOAM_COL = Color(0.9, 0, 0, 1)
+
+[node name="End_Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b85lf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_2ci35")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0.00392157, 0.694118)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -236.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_yvqtw")
+theme_override_font_sizes/font_size = 90
+text = "You are Dead"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Play_Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -20.0
+offset_right = 100.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_yvqtw")
+text = "Play Again"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 36.0
+offset_right = 100.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_yvqtw")
+text = "Quit"
+
+[connection signal="pressed" from="Play_Button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
